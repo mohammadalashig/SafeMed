@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirm Your Email - SafeMed</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap');
+    
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #0a0a0f 0%, #1a1a24 100%);
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
+    
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #12121a;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    }
+    
+    .email-header {
+      background: linear-gradient(135deg, #0084ff 0%, #00a3ff 100%);
+      padding: 40px 30px;
+      text-align: center;
+    }
+    
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #33b5ff 0%, #fcd34d 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0;
+    }
+    
+    .email-body {
+      padding: 40px 30px;
+      background: #12121a;
+    }
+    
+    .email-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin: 0 0 20px 0;
+    }
+    
+    .email-text {
+      color: #cbd5e1;
+      font-size: 16px;
+      margin: 0 0 20px 0;
+    }
+    
+    .button-container {
+      text-align: center;
+      margin: 30px 0;
+    }
+    
+    .button {
+      display: inline-block;
+      padding: 14px 32px;
+      background: linear-gradient(135deg, #0084ff 0%, #00a3ff 100%);
+      color: #ffffff !important;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 16px;
+      box-shadow: 0 4px 20px rgba(0, 163, 255, 0.4);
+    }
+    
+    .code-container {
+      background: #1a1a24;
+      border: 1px solid #23232e;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 30px 0;
+      text-align: center;
+    }
+    
+    .code-label {
+      color: #94a3b8;
+      font-size: 14px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .code {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 32px;
+      font-weight: 700;
+      color: #fbbf24;
+      letter-spacing: 8px;
+      margin: 0;
+    }
+    
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #23232e, transparent);
+      margin: 30px 0;
+    }
+    
+    .footer {
+      padding: 30px;
+      background: #0a0a0f;
+      text-align: center;
+      border-top: 1px solid #23232e;
+    }
+    
+    .footer-text {
+      color: #64748b;
+      font-size: 14px;
+      margin: 0 0 10px 0;
+    }
+    
+    .footer-link {
+      color: #33b5ff;
+      text-decoration: none;
+    }
+    
+    .warning {
+      background: rgba(251, 191, 36, 0.1);
+      border-left: 3px solid #fbbf24;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+    
+    .warning-text {
+      color: #fcd34d;
+      font-size: 14px;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div style="padding: 20px;">
+    <div class="email-container">
+      <div class="email-header">
+        <h1 class="logo">SafeMed</h1>
+      </div>
+      
+      <div class="email-body">
+        <h2 class="email-title">Confirm Your Email Address</h2>
+        
+        <p class="email-text">
+          Welcome to SafeMed! We're excited to have you join our AI-powered medication safety platform.
+        </p>
+        
+        <p class="email-text">
+          To complete your registration, please enter the verification code below on the SafeMed website:
+        </p>
+        
+        <div class="code-container">
+          <div class="code-label">Your Verification Code</div>
+          <p class="code">{{ .Token }}</p>
+          <p style="color: #94a3b8; font-size: 12px; margin-top: 10px;">
+            Enter this code on the verification page
+          </p>
+        </div>
+        
+        <p class="email-text" style="text-align: center; margin-top: 20px;">
+          Go to <strong>{{ .SiteURL }}/auth/verify-email</strong> and enter this code to verify your email address.
+        </p>
+        
+        <div class="divider"></div>
+        
+        <div class="button-container">
+          <a href="{{ .SiteURL }}/auth/verify-email" class="button">Go to Verification Page</a>
+        </div>
+        
+        <div class="warning">
+          <p class="warning-text">
+            <strong>Security Note:</strong> This verification code will expire in 1 hour. If you didn't create an account with SafeMed, please ignore this email.
+          </p>
+        </div>
+        
+        <p class="email-text" style="margin-top: 30px; font-size: 14px; color: #94a3b8;">
+          Having trouble? You can also verify by clicking the link below:
+        </p>
+        <p style="word-break: break-all; color: #33b5ff; font-size: 14px;">
+          {{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=email&next={{ .RedirectTo }}
+        </p>
+      </div>
+      
+      <div class="footer">
+        <p class="footer-text">
+          This email was sent by SafeMed<br>
+          AI-powered medication safety platform
+        </p>
+        <p class="footer-text">
+          <a href="{{ .SiteURL }}" class="footer-link">Visit SafeMed</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
